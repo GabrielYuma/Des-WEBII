@@ -17,6 +17,10 @@ server.use(express.urlencoded({extended:true})); //middleware para tratamento da
 server.use(express.json()); //middleware para tratamento das requests
 server.use(routes);
 
+routes.get('/', (req, res) => {
+    res.json({'message': 'Servido está funcionando'})
+})
+
 server.listen(porta, ()=>{
     console.log("Servidor rodando na porta: "+ porta)
 })
