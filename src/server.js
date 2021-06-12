@@ -25,12 +25,12 @@ server.listen(porta, ()=>{
     console.log("Servidor rodando na porta: "+ porta)
 })
 
-
-//const express = require('express');
 const sync = require('./bd/postgres').sincronizarPostgres;
 const app = express();
 const port = process.env.APP_PORT;
 const hostname = process.env.APP_HOSTNAME;
+
+(async () => sync())()
 
 const pessoasRoutesPg = require('./routes/pessoasRoute_2');
 const unidadesRoutesPg = require('./routes/unidadesRoute_2');
@@ -49,6 +49,6 @@ app.use('/dados/unidadespg', unidadesRoutesPg);
 app.use('/dados/agendamentospg', agendamentosRoutesPg);
 
 
-app.listen(port, hostname, () => {
+/*app.listen(port, hostname, () => {
     console.log(`Servidor rodando no endereço: https://${hostname}:${port}`);
-});
+});*/
